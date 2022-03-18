@@ -1,5 +1,4 @@
 import wget
-import psycopg2
 import requests
 from bs4 import BeautifulSoup 
 
@@ -9,15 +8,15 @@ headers = {
 }
 
 
-def get_Connection():
-    try:
-        conn = psycopg2.connect(host="localhost", database="images", port="5432", user="hari", password="datapass")
-        cur = conn.cursor()
-      
-    except Exception as e:
-        print(e)
-    cur.commit()
-    conn.close()
+# def get_Connection():
+#     try:
+#         conn = psycopg2.connect(host="localhost", database="getty_images", port="5432", user="hari", password="datapass")
+#         cur = conn.cursor() 
+#         cur.execute("CREATE DATABASE gettyimages WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'gettyimages')")         
+#     except Exception as e:
+#         print(e)
+#     cur.commit()
+#     conn.close()
 
 
 def get_image(image_url):
@@ -40,11 +39,10 @@ def image_download(image_url):
     return image_link
 
 
-def main():
-    links = get_image("https://www.gettyimages.in/photos/aamir-khan-actor")
+def main(name):
+    links = get_image("https://www.gettyimages.in/photos/"+name)
     for i in links:
         wget.download(image_download("https://www.gettyimages.in"+i))
 
-
 if __name__ == "__main__":
-    main()
+    main("shah rukh khan")
