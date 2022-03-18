@@ -9,6 +9,17 @@ headers = {
 }
 
 
+def get_Connection():
+    try:
+        conn = psycopg2.connect(host="localhost", database="images", port="5432", user="hari", password="datapass")
+        cur = conn.cursor()
+      
+    except Exception as e:
+        print(e)
+    cur.commit()
+    conn.close()
+
+
 def get_image(image_url):
     image = []
     resp = requests.get(url=image_url, headers=headers)
@@ -30,8 +41,8 @@ def image_download(image_url):
 
 
 def main():
-    link = get_image("https://www.gettyimages.in/photos/aamir-khan-actor")
-    for i in link:
+    links = get_image("https://www.gettyimages.in/photos/aamir-khan-actor")
+    for i in links:
         wget.download(image_download("https://www.gettyimages.in"+i))
 
 
