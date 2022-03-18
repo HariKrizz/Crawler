@@ -1,8 +1,9 @@
 import wget
+import psycopg2
 import requests
 from bs4 import BeautifulSoup 
 
-heads = {
+headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
 }
@@ -10,7 +11,7 @@ heads = {
 
 def get_image(image_url):
     image = []
-    resp = requests.get(url=image_url, headers=heads)
+    resp = requests.get(url=image_url, headers=headers)
     soup = BeautifulSoup(resp.content, features="html.parser")
     image_div = soup.find("div", {"class":"GalleryItems-module__searchContent___DbMmK"})
 
@@ -21,7 +22,7 @@ def get_image(image_url):
 
 
 def image_download(image_url):
-    resp = requests.get(url=image_url,headers=heads)
+    resp = requests.get(url=image_url,headers=headers)
     soup = BeautifulSoup(resp.content, features="html.parser")
     image_div = soup.find("img",{"class":"AssetCard-module__image___dams4"})
     image_link = image_div['src']
