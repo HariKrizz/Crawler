@@ -1,4 +1,5 @@
 
+import wget
 import requests
 from bs4 import BeautifulSoup 
 
@@ -19,3 +20,17 @@ def get_image(image_url):
         image.append(i["href"])
     return image
 
+
+def image_download(image_url):
+    resp = requests.get(url=image_url,headers=heads)
+    soup = BeautifulSoup(resp.content, features="html.parser")
+    image_div = soup.find("img",{"class":"AssetCard-module__image___dams4"})
+    image_link = image_div['src']
+    return image_link
+
+def main():
+    link = get_image("https://www.gettyimages.in/photos/aamir-khan-actor")
+    for i in link:
+        wget.download(image_download("https://www.gettyimages.in"+i))
+if __name__ == "__main__":
+    main()
