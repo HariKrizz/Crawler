@@ -1,6 +1,9 @@
 import os
 import requests
+import psycopg2
 from bs4 import BeautifulSoup
+
+conn = psycopg2.connect(dbname="music", host="localhost", port=5432, user="hari")
 
 def get_artists(url):
     ret=[]
@@ -33,33 +36,22 @@ def get_lyrics(song_url):
     return lyrics
 
 def crawl():
-    # base_dir = "lyrics"
-    # try:
-    #     os.mkdir(base_dir)
-    # except Exception:
-    #     pass
 
+    connection = psycopg2.connect("dbname=lyrics")
+    cur = connection.cursor()
+    
     artists= get_artists("https://www.songlyrics.com/a/")
-    for name, link in artists:
-        # print(name, "   :   ",link)
-        # name_dir = os.path.join(base_dir, name.replace(" ", "_").lower())
-        # try:
-        #     os.mkdir(name_dir)
-        # except Exception:
-        #     pass
-
+    for name, link in artists[:10]:
+        cur.execute("INSERT INTO artist (name) VALUES (%s);", (name,))
         songs = get_songs(link)
 
         for song, song_link in songs:
             print("Song Name: ",song)
             print('-+-+-+-+-+-+-+-+-+-+-+-+-')
             lyrics = get_lyrics(song_link) 
-            # song_file = os.path.join(name_dir, song.replace(" ", "_").lower()+".txt")
-            # with open(song_file, "w") as f:
-            #     f.write(lyrics)
-            # print (".", end="", flush=True)
-            print(lyrics)
-            print('-------------------------\n')
+            cur.execute("INSERT INTO song (artist,songname,lyrics) VALUES((select id from artist where name=%s),%s,%s);",(name,song,lyrics)) 
+    connection.commit()
+    print('Added songs to Database')
 
         
 if __name__ == "__main__":
