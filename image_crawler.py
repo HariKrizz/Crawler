@@ -1,48 +1,42 @@
-import wget
+import os
 import requests
-from bs4 import BeautifulSoup 
+from bs4 import BeautifulSoup
+import wget
 
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+header = {
+    'User-Agent': 'Mozilla/5.0 (MacintoshIntel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
 }
 
 
-# def get_Connection():
-#     try:
-#         conn = psycopg2.connect(host="localhost", database="getty_images", port="5432", user="hari", password="datapass")
-#         cur = conn.cursor() 
-#         cur.execute("CREATE DATABASE gettyimages WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'gettyimages')")         
-#     except Exception as e:
-#         print(e)
-#     cur.commit()
-#     conn.close()
-
-
-def get_image(image_url):
-    image = []
-    resp = requests.get(url=image_url, headers=headers)
+def get_image(url):
+    image_store = []
+    resp = requests.get(url, headers=header)
     soup = BeautifulSoup(resp.content, features="html.parser")
-    image_div = soup.find("div", {"class":"GalleryItems-module__searchContent___DbMmK"})
+    images = soup.find("div", {"class": "GalleryItems-module__searchContent___DbMmK"})
+    link = images.find_all("a")
+    for i in link:
+       image_store.append((i['href']))
+    return image_store
 
-    image_link = image_div.find_all("a")
-    for i in image_link:
-        image.append(i["href"])
-    return image
 
-
-def image_download(image_url):
-    resp = requests.get(url=image_url,headers=headers)
+def image_download(url):
+    resp = requests.get(url, headers=header)
     soup = BeautifulSoup(resp.content, features="html.parser")
-    image_div = soup.find("img",{"class":"AssetCard-module__image___dams4"})
+    image_div=soup.find("img",{"class":"AssetCard-module__image___dams4"})
     image_link = image_div['src']
     return image_link
 
 
-def main(name):
-    links = get_image("https://www.gettyimages.in/photos/"+name)
-    for i in links:
-        wget.download(image_download("https://www.gettyimages.in"+i))
+def main(search_query):
+    try:
+        os.mkdir(search_query)
+    except Exception as e:
+        print(e)
+
+    image = get_image("https://www.gettyimages.in/photos/"+search_query)
+    for i in image:
+        pics = wget.download(image_download("https://www.gettyimages.in"+i))
+        os.path.join(search_query,pics)
 
 if __name__ == "__main__":
-    main("shah rukh khan")
+    main("sachin tendulkar")
