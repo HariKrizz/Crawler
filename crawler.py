@@ -82,6 +82,15 @@ def get_all_artist():
     cmd.execute("select id,name from artist" )  
     artists= cmd.fetchall()
     return artists
+    
+#Lyrics by Song ID
+def get_lyrics(song_id):
+    con = psycopg2.connect("dbname=music")
+    cmd=con.cursor()
+    cmd.execute("select lyrics,song_name from songs where id=%s",(song_id,))
+    lyric= cmd.fetchone()
+    return lyric
+
 
 if __name__ == "__main__":
     crawl()
