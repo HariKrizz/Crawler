@@ -75,5 +75,13 @@ def singer(artist_id):
     return singer
 
 
+#Get the Artist and ID
+def get_all_artist():
+    con = psycopg2.connect("dbname=music")
+    cmd=con.cursor()
+    cmd.execute("select id,name from artist" )  
+    artists= cmd.fetchall()
+    return artists
+
 if __name__ == "__main__":
     crawl()
