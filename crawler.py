@@ -50,6 +50,7 @@ def crawl():
     conn.commit()
     print("DONE")
 
+
 #Get All song and artist
 def get_all_songs(artist):
     conn = psycopg2.connect("dbname=music")
@@ -58,13 +59,15 @@ def get_all_songs(artist):
     songs = cur.fetchall()
     return songs
 
+
 #Songs by artist id
 def get_all_songs(art_id):
     con = psycopg2.connect("dbname=music")
     cmd=con.cursor()
-    cmd.execute("select song.song_name, song.id from song, artist where artist.id = song.artist and artist.id=%s",(art_id,))  
+    cmd.execute("select song.song_name, song.song_id from song, artist where artist.id = song.artist and artist.id=%s",(art_id,))  
     songs= cmd.fetchall()
     return songs
+
 
 #Get singer
 def singer(artist_id):
@@ -75,22 +78,22 @@ def singer(artist_id):
     return singer
 
 
-#Get the Artist and ID
+#Get the Artist and ID for base
 def get_all_artist():
     con = psycopg2.connect("dbname=music")
-    cmd=con.cursor()
-    cmd.execute("select id,name from artist" )  
-    artists= cmd.fetchall()
+    cur = con.cursor()
+    cur.execute("select id,name from artist" )  
+    artists = cur.fetchall()
     return artists
     
+
 #Lyrics by Song ID
 def get_lyrics(song_id):
     con = psycopg2.connect("dbname=music")
-    cmd=con.cursor()
-    cmd.execute("select lyrics,song_name from songs where id=%s",(song_id,))
-    lyric= cmd.fetchone()
-    return lyric
-
+    cur = con.cursor()
+    cur.execute("select lyrics,song_name from song where song_id=%s",(song_id,))
+    lyrics = cur.fetchone()
+    return lyrics
 
 if __name__ == "__main__":
     crawl()
