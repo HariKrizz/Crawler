@@ -3,14 +3,14 @@
 
 <h1>Welcome!</h1>
 Welcome to the Lyrics Database. Available artists are listed here:
-<ol type="none">
-  {%for aid,aname in artists%}
+<ul type="none">
+  {% for id, name in artists %}
   <div class="list-box">
     <li>
-        <a href="/songs/{{aid}}">{{ aname }}</a>
+        <a href="/lyrics/{{id}}">{{ name }}</a>
     </li>
   </div>
   {%endfor%}
-</ol>
+</ul>
 
 {%endblock%}
