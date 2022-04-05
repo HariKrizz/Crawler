@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><marquee>SongLyrics</marquee></title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static',filename='style.css')}}"/>
+    <link rel="icon" sizes="192x192" href="{{ url_for('static',filename='icons8-lullaby.png') }}" />
+    <title> SongLyric.com</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}"/>
+
   </head>
   <body>
     <div class="navbar">
@@ -17,6 +16,8 @@
       </div>
     </div>
     {%block body%}
+
     {%endblock%}
   </body>
+
 </html>
