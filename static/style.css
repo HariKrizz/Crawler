@@ -1,20 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap');
 * {
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
 }
+
 ::-webkit-scrollbar {
   width: 20px;
 }
 
 .body-bg {
-  background-color:whitesmoke;
+  background-color:rgb(252, 232, 208);
   width: 100%;
+}
+
+.caption {
+  font-size: 8px;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: blueviolet;
 }
 
 .navbar {
   background-color: rgb(255, 255, 255);
-  width: 100%;
+  width:100;
   justify-content: center;
   text-align: center;
   height: 93px;
@@ -27,29 +36,46 @@
 
 .song {
   color: rgb(45, 45, 45);
+  font-weight:bolder;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background: transparent;
 }
 
 .lyrics {
-  color: #467fb9;
+  color: #397abc;
   font-weight:bolder;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background: transparent;
 }
 
 .com {
   color: rgb(45, 45, 45);
   background: transparent;
-  padding-top: 14px;
+  padding-top: 12px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
+}
+
+.artist {
+  color: orangered;
+  font-weight:600;
+}
+
+.songs {
+  color: rgb(24, 120, 209);
+  font-weight:600;
+}
+
+.lyric_heading {
+  color:darkgreen;
+  font-weight:600;
 }
 
 a:hover {
   color: dodgerblue;
 }
 
-a,a:active,
-
-a:focus {
+a,a:active,a:focus {
   text-decoration: none;
   color: inherit;
 }
@@ -67,7 +93,7 @@ h1,h4 {
 }
 
 .list-box {
-  border: 2px solid rgb(16, 114, 209);
+  border: 1px solid rgb(16, 114, 209);
   border-radius: 2px;
   min-width: 20px;
   margin-bottom: 3px;
@@ -87,14 +113,14 @@ div.col-3, div.col-4 {
 }
 
 .footer {
-  background-color:rgb(45, 104, 212);
+  background-color:white;
   width:100%;
-  height: 40px;
+  height: 46px;
   padding-top: 10px;
-  text-align: center
+  text-align: center;
 }
 
-li.current{
+li.current {
   background-color:crimson;
 }
 
