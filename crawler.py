@@ -73,12 +73,12 @@ def get_all_songs(art_id):
 def singer(artist_id):
     con = psycopg2.connect("dbname=music")
     cmd=con.cursor()
-    cmd.execute("select name from artist where artist.id=%s",(artist_id,))  
+    cmd.execute("select id,name from artist where artist.id=%s",(artist_id,))  
     singer= cmd.fetchone()
     return singer
 
 
-#Get the Artist and ID for base
+#Get the Artist for base.html
 def get_all_artist():
     con = psycopg2.connect("dbname=music")
     cur = con.cursor()
