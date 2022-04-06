@@ -95,5 +95,6 @@ def get_lyrics(song_id):
     lyrics = cur.fetchone()
     return lyrics
 
+
 if __name__ == "__main__":
     crawl()
