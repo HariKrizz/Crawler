@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
-{%block body %}
-<u>
-    <center><h2>{{lyrics[1]}}</h2>
-</u>
-<p class="lyrics_para">{{ lyrics[0] }}</p>
+{% extends 'songlist.html' %}
+{%block lyrics%}
+    
+    <center><h4><b>{{lyrics[1]}}</b></h4></center>
+    <hr>
+<pre class="lyrics_para">{{lyrics[0]}}</pre>
 {%endblock%}

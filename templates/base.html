@@ -5,19 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" sizes="192x192" href="{{ url_for('static',filename='icons8-lullaby.png') }}" />
-    <title> SongLyric.com</title>
+    <title>♪ songlyrics.com</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+          crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}"/>
-
   </head>
-  <body>
+  <body class="body-bg">
     <div class="navbar">
-      <div class="heading">
-        <h1 class="song"> SONG </h1> <h1 class="lyrics"> LYRIC </h1> <h4 class="com">.com </h4>
+       <h1>♪ Song</h1><h1 class="lyrics">Lyrics</h1><h5 class="com">.com</h5> 
+    </div>
+   
+    <div class="container">
+      {%block index%}{%endblock%}
+      <div class="row">
+          <div class="col-3">
+            <h5 class="lyrics">Artists</h5><hr>
+            Available artists: {%block artist%} {% endblock %}
+          </div> 
+          <div class="col-4"><h5 class="lyrics">Songs</h5><hr>
+              {%block songlist%} {% endblock %}
+          </div>
+          <div class="col-5" style="text-align:justify"><h5 class="lyrics">Lyrics</h5><hr>
+              {%block lyrics%} {% endblock %}
+          </div>
       </div>
     </div>
-    {%block body%}
 
-    {%endblock%}
+    <br><br><br><br>
+    <footer class="footer">
+        <center>
+          <b>Copyright &copy; SongLyrics.com, Inc. All rights reserved.2022</b>
+        </center> 
+    </footer>
   </body>
-
 </html>

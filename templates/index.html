@@ -1,16 +1,22 @@
 {% extends 'base.html' %} 
-{%block body%}
+{%block index%}
+<br>
+<h4><b>Welcome to the Lyrics Database.</b></h4>
+<br><br>
+{%endblock%}
 
-<h1>Welcome!</h1>
-Welcome to the Lyrics Database. Available artists are listed here:
+{%block artist%}
+<br>
 <ul type="none">
+  <br>
   {% for id, name in artists %}
+  {%if id == current%}
+  <li class="current">{{name}}</li>
+  {%else%}
   <div class="list-box">
-    <li>
-        <a href="/lyrics/{{id}}">{{ name }}</a>
-    </li>
+        <a href="/songs/{{id}}">{{ name }}</a>
   </div>
+  {% endif %}
   {%endfor%}
 </ul>
-
 {%endblock%}
