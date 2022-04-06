@@ -10,13 +10,9 @@
 <ul type="none">
   <br>
   {% for id, name in artists %}
-  {%if id == current%}
-  <li class="current">{{name}}</li>
-  {%else%}
   <div class="list-box">
         <a href="/songs/{{id}}">{{ name }}</a>
   </div>
-  {% endif %}
   {%endfor%}
 </ul>
 {%endblock%}

@@ -1,16 +1,11 @@
 {% extends 'index.html'%}
 {%block songlist %}
         <br>
-    
         <p>Songs available for artist <b>{{artist[1]}}</b> are:</p>
         <ol>{%for song,sid in songs%}
-            {%if sid == current%}
-            <li class="current"> {{song}} </li>
-            {%else%}
-            <li><a href="{{url_for('lyrics', id=artist[0],sid=sid)}}">{{song}}</a></li>
-            {%endif%}
-            <br>
+            <div class="list-box">
+            <a href="{{url_for('lyrics', id=artist[0],sid=sid)}}">{{song}}</a>
+            </div>
             {%endfor%}
         </ol>
-
 {%endblock%}
