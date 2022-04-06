@@ -23,7 +23,7 @@ def lyrics(sid,id):
     artist = crawler.singer(id)
     artists = crawler.get_all_artist()
     lyrics= crawler.get_lyrics(sid)
-    return render_template("lyrics.html", lyrics=lyrics, songs=songs, artists=artists, artist=artist, current=sid)
+    return render_template("lyrics.html", lyrics=lyrics, songs=songs, artists=artists, artist=artist, current=id, c_song =sid)
 
 
 if __name__ == "__main__":

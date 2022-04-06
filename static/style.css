@@ -73,7 +73,7 @@ h1,h4 {
   margin-bottom: 3px;
   padding-left: 5px;
   align-self:center;
-  background-color: rgb(16, 114, 209);
+  background-color: rgb(226, 231, 236);
 }
 
 .list-box:hover {
@@ -89,7 +89,7 @@ div.col-3, div.col-4 {
 .footer {
   background-color:rgb(45, 104, 212);
   width:100%;
-  height: 30px;
+  height: 40px;
   padding-top: 10px;
   text-align: center
 }
