@@ -1,12 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify, render_template
 import crawler
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
+def base_Page():
+    return render_template("base.html")
+
+@app.route("/artist")
+def fetch_Artist():
     artist = crawler.get_all_artist()
-    return render_template("index.html", artists=artist )
+    json_Array = [{'id':i[0],'name':i[1]} for i in artist]
+    return jsonify(json_Array)
 
 
 @app.route("/songs/<int:id>")
