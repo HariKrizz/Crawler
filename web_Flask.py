@@ -10,25 +10,21 @@ def base_Page():
 @app.route("/artist")
 def fetch_Artist():
     artist = crawler.get_all_artist()
-    json_Array = [{'id':i[0],'name':i[1]} for i in artist]
-    return jsonify(json_Array)
+    artist_Array = [{'id':i[0],'name':i[1]} for i in artist]
+    return jsonify(artist_Array)
 
 
 @app.route("/songs/<int:id>")
 def list_all_songs(id):
     songs = crawler.get_all_songs(id)
-    artist = crawler.singer(id)
-    artists = crawler.get_all_artist()
-    return render_template("songlist.html", artist=artist, songs=songs, artists=artists, current=id)
+    songs_Array = [{'song_id':i[0], 'song_name':i[1]} for i in songs]
+    return jsonify(songs_Array)
 
 
-@app.route("/songs/<int:id>/lyrics/<int:sid>")
-def lyrics(sid,id):
-    songs = crawler.get_all_songs(id)
-    artist = crawler.singer(id)
-    artists = crawler.get_all_artist()
+@app.route("/songs/lyrics/<int:sid>")
+def lyrics(sid):
     lyrics= crawler.get_lyrics(sid)
-    return render_template("lyrics.html", lyrics=lyrics, songs=songs, artists=artists, artist=artist, current=id, c_song =sid)
+    return jsonify(lyrics)
 
 
 if __name__ == "__main__":

@@ -9,12 +9,12 @@
 }
 
 .body-bg {
-  background-color:rgba(82, 85, 100, 0.747);
+  background-color:rgba(195, 195, 199, 0.747);
   width: 100%;
 }
 
 .navbar {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(195, 195, 199, 0.747);
   width:100%;
   justify-content: center;
   text-align: center;
@@ -51,35 +51,18 @@
 .songlyrics {
   font-weight: bolder;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: wheat  ;
+  color: rgb(11, 28, 60)  ;
 }
 
-
-.artist {
-  color: rgba(3, 20, 46, 0.726);
+.artist, .songs, .lyric_heading {
+  color: rgba(1, 3, 5, 0.726);
   font-weight:bolder;
 
-}
-
-.songs {
-  color: rgba(3, 20, 46, 0.726);
-  font-weight:bolder;
-}
-
-.lyric_heading {
-  color: rgba(3, 20, 46, 0.726);
-  font-weight:bolder;
 }
 
 a,a:active,a:focus {
   text-decoration: none;
   color: inherit;
-}
-
-.lyrics_para {
-  max-width: 50em;
-  justify-content: center;
-  display: grid;
 }
 
 h1,h3 {
@@ -94,12 +77,12 @@ h1,h3 {
   margin-bottom: 3px;
   padding-left: 5px;
   align-self:center;
-  color: whitesmoke;
-  background-color: rgb(32, 89, 196);
+  color: rgb(24, 75, 141);
+  
 }
 
 .artist-item:hover {
-  outline-color: whitesmoke;
+  outline-color: rgb(32, 89, 194);
   background-color: whitesmoke;
   color: rgb(32, 89, 196);
 }
@@ -111,7 +94,7 @@ h1,h3 {
 }
 
 div.col-3 {
-  border-right: 1px dotted black;
+  border-right: 4px double rgb(101, 100, 100);
   font-size: 100%;
 }
 
@@ -128,7 +111,3 @@ li.current {
   background-color:crimson;
 }
 
-ul {
-  justify-content: flex-start;
-  display: grid;
-}
