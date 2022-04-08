@@ -18,35 +18,30 @@
 
     <script src="{{ url_for('static',filename='lyrics.js')}}"></script>
 
-
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}"/>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;1,700&display=swap" rel="stylesheet"/>
-    
-    
   </head>
   
   <body class="body-bg">
     <div class="navbar">
       <h1 class="song">♪ Song</h1><h1 class="lyrics">Lyrics</h1><h5 class="com">.com</h5>
     </div>
-   
+    <br>
+    <h3><b>Welcome to the Lyrics Database.</b></h3>
+    <br>
     <div class="container">
-      {%block index%}{%endblock%}
-      <div class="row">
-          <div class="col-3 artistlist">
-            <!-- <h5 class="artist">Artists</h5><hr> -->
-            <!-- Available artists:{%block artist%} {% endblock %} -->
-          </div> 
-          <!-- <div class="col-3">
-            <h5 class="songs">Songs</h5><hr>
-              {%block songlist%} {% endblock %}
-          </div>
-          <div class="col-md-6" style="text-align:justify"><h5 class="lyric_heading">Lyrics</h5><hr>
-              {%block lyrics%} {% endblock %}
-          </div> -->
-      </div>
+        <div class="row">
+            <p>These are the available artists in the database.</p>
+            <br>
+            <div class="col-3 artistlist"></div> 
+            <br>
+           
+            <div class="col-3 songlist"></div>
+            <!-- <h4 class="lyric_heading">Lyrics</h4><hr> -->
+            <div class="col-6 songlyrics" style="text-align:justify"></div> 
+        </div>
     </div>
-    <br><br><br><br>
+    <br><br>
     <footer class="footer">
       <p>
           <b>Copyright  &copy; SongLyrics.com, Inc. All rights reserved. 2022</b>
