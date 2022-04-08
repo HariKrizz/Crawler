@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap');
 * {
   margin: 0;
   font-family: 'PT Sans', sans-serif;
@@ -10,20 +9,13 @@
 }
 
 .body-bg {
-  background-color:rgb(252, 232, 208);
+  background-color:rgba(82, 85, 100, 0.747);
   width: 100%;
-}
-
-.caption {
-  font-size: 8px;
-  font-weight: bold;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: blueviolet;
 }
 
 .navbar {
   background-color: rgb(255, 255, 255);
-  width:100;
+  width:100%;
   justify-content: center;
   text-align: center;
   height: 93px;
@@ -56,23 +48,27 @@
   font-weight: bold;
 }
 
+.songlyrics {
+  font-weight: bolder;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: wheat  ;
+}
+
+
 .artist {
-  color: orangered;
-  font-weight:600;
+  color: rgba(3, 20, 46, 0.726);
+  font-weight:bolder;
+
 }
 
 .songs {
-  color: rgb(24, 120, 209);
-  font-weight:600;
+  color: rgba(3, 20, 46, 0.726);
+  font-weight:bolder;
 }
 
 .lyric_heading {
-  color:darkgreen;
-  font-weight:600;
-}
-
-a:hover {
-  color: dodgerblue;
+  color: rgba(3, 20, 46, 0.726);
+  font-weight:bolder;
 }
 
 a,a:active,a:focus {
@@ -86,28 +82,35 @@ a,a:active,a:focus {
   display: grid;
 }
 
-h1,h4 {
+h1,h3 {
   text-align: center;
   text-shadow: #467fb9;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.list-box {
-  border: 1px solid rgb(16, 114, 209);
+.artist-item, .song-item {
   border-radius: 2px;
   min-width: 20px;
   margin-bottom: 3px;
   padding-left: 5px;
   align-self:center;
-  background-color: rgb(226, 231, 236);
+  color: whitesmoke;
+  background-color: rgb(32, 89, 196);
 }
 
-.list-box:hover {
-  outline-color: wheat;
+.artist-item:hover {
+  outline-color: whitesmoke;
   background-color: whitesmoke;
+  color: rgb(32, 89, 196);
 }
 
-div.col-3, div.col-4 {
+.song-item:hover {
+  outline-color: whitesmoke;
+  background-color: whitesmoke;
+  color:rgb(24, 120, 209);
+}
+
+div.col-3 {
   border-right: 1px dotted black;
   font-size: 100%;
 }
@@ -115,9 +118,10 @@ div.col-3, div.col-4 {
 .footer {
   background-color:white;
   width:100%;
-  height: 46px;
-  padding-top: 10px;
+  height: 43px;
+  padding-bottom: 0px;
   text-align: center;
+  text-shadow: #397abc;
 }
 
 li.current {
@@ -125,6 +129,6 @@ li.current {
 }
 
 ul {
-  justify-content: center;
+  justify-content: flex-start;
   display: grid;
 }

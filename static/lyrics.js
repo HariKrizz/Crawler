@@ -4,9 +4,9 @@ function main() {
     $.get({url: 'http://127.0.0.1:5000/artist', success: (data) => {
 
         artist_list = "";
-        data.forEach(i =>{ artist_list += `<li class="artist-item" data-id=${i.id}> ${i.name} </li>`; });
+        data.forEach(i =>{ artist_list += `<li class="artist-item" data-id=${i.id} data-name=${i.name}> ${i.name} </li>`; });
 
-        html_tag = `<ol> ${artist_list} </ol>`;
+        html_tag = `<ul type="none"> ${artist_list} </ol>`;
         $("div.artistlist").html(html_tag);
         console.log(data);
         },   
@@ -14,11 +14,12 @@ function main() {
 
     $(document).on('click', 'li.artist-item', function () {
         artist_id = ($(this).data('id'));
+        artist_name = ($(this).data('name'));
 
         $.get({url:`http://127.0.0.1:5000/songs/${artist_id}`, success: (data)=>{
             song_list = "";
             data.forEach(i =>{song_list += `<li class="song-item" data-id=${i.song_id}> ${i.song_name} </li>`});
-            html_tag = `<ol> ${song_list} </ol>`;
+            html_tag = `<ul type="none"> These are the songs for the artist <br> ${song_list} </ol>`;
             $("div.songlist").html(html_tag);
             console.log(data);
             },  
