@@ -9,12 +9,12 @@
 }
 
 .body-bg {
-  background-color:rgba(195, 195, 199, 0.747);
+  background-color:rgba(195, 195, 199);
   width: 100%;
 }
 
 .navbar {
-  background-color: rgba(195, 195, 199, 0.747);
+  background-color: rgba(195, 195, 199);
   width:100%;
   justify-content: center;
   text-align: center;
