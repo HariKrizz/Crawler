@@ -7,7 +7,7 @@ api = Blueprint('api', __name__)
 def fetch_Artist():
     artist = crawler.get_all_artist()
     artist_Array = [{'id':i[0],'name':i[1]} for i in artist]
-    return jsonify(artist_Array[0])
+    return jsonify(artist_Array)
 
 @api.route("/songs/<int:id>")
 def list_all_songs(id):
