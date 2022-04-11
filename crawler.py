@@ -4,15 +4,15 @@ import psycopg2
 
 
 def get_artists(url):
-    ret = []
+    res = []
     r = requests.get(url)
     body = r.content
     soup = BeautifulSoup(body, features="html.parser")
     tracklist = soup.find("table", {"class": "tracklist"})
     links = tracklist.find_all("a")
     for i in links:
-        ret.append((i.text, i['href']))
-    return ret
+        res.append((i.text, i['href']))
+    return res
 
 
 def get_songs(artist_url):
@@ -64,7 +64,7 @@ def get_all_songs(artist):
 def get_all_songs(art_id):
     con = psycopg2.connect("dbname=music")
     cmd=con.cursor()
-    cmd.execute("select song.song_name, song.song_id from song, artist where artist.id = song.artist and artist.id=%s",(art_id,))  
+    cmd.execute("select  song.song_id, song.song_name from song, artist where artist.id = song.artist and artist.id=%s",(art_id,))  
     songs= cmd.fetchall()
     return songs
 
