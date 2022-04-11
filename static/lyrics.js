@@ -1,7 +1,7 @@
 console.log("Hello");
 
 function main() {
-    $.get({url: 'http://127.0.0.1:5000', success: (data) => {
+    $.get({url: 'http://127.0.0.1:5000/api/artist', success: (data) => {
 
         artist_list = "";
         data.forEach(i =>{ artist_list += `<li class="artist-item" data-id=${i.id} data-name=${i.name}> ${i.name} </li>`; });
@@ -13,6 +13,7 @@ function main() {
     });
 
     $(document).on('click', 'li.artist-item', function () {
+
         artist_id = ($(this).data('id'));
         artist_name = ($(this).data('name'));
         
@@ -29,7 +30,8 @@ function main() {
     $(document).on('click', 'li.song-item', function () {
         song_id = $(this).data('id');
         $.get({url:`http://127.0.0.1:5000/api/songs/lyrics/${song_id}`, success: (data)=> {
-            html_tag = `<h4 class=lyric_heading><b>Lyrics<b></h4><hr><pre> ${data[0]} </pre>`;
+            html_tag = `<h4 class=lyric_heading><b>Lyrics<b></h4><hr>
+            <h3 class =lyric_heading><b>${data[1]}<b></h3><hr><br> <pre><b>${data[0]}<b></pre>`;
             $("div.songlyrics").html(html_tag);
             console.log(data);
             },  
